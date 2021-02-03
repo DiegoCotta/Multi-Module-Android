@@ -1,0 +1,10 @@
+include(":movies-impl")
+include(":movies-api")
+include(":login-api")
+include(":login-impl")
+include(":app")
+project(":login-impl").projectDir = File(rootDir, "login/login-impl/")
+project(":login-api").projectDir = File(rootDir, "login/login-api/")
+project(":movies-api").projectDir = File(rootDir, "movies/movies-api/")
+project(":movies-impl").projectDir = File(rootDir, "movies/movies-impl/")
+rootProject.name = "Architecture Example"
