@@ -10,9 +10,21 @@ plugins {
 
 gradlePlugin {
     plugins {
-        register("common-plugin") {
-            id = "common-plugin"
-            implementationClass = "ConfigPlugin"
+        register("android-base") {
+            id = "android-base"
+            implementationClass = "com.example.android.architectureexample.plugins.ConfigAndroidPlugin"
+        }
+        register("android-api") {
+            id = "android-api"
+            implementationClass = "com.example.android.architectureexample.plugins.ConfigApiPlugin"
+        }
+        register("android-impl") {
+            id = "android-impl"
+            implementationClass = "com.example.android.architectureexample.plugins.ConfigImplPlugin"
+        }
+        register("android-fake") {
+            id = "android-fake"
+            implementationClass = "com.example.android.architectureexample.plugins.ConfigFakePlugin"
         }
     }
 }
