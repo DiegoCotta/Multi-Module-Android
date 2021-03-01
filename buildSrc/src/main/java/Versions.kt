@@ -1,5 +1,7 @@
 package com.example.android.architectureexample
 
+import com.android.aaptcompiler.android.ResTableConfig
+
 object Versions {
 
     const val MIN_ANDROID_SDK = 19
@@ -25,6 +27,8 @@ object Versions {
         const val APP_INDEX = "19.1.0"
     }
 
+    const val NAVIGATION = "2.3.3"
+
     const val CRASHLYTICS = "2.10.1"
     const val GMS_MAP = "17.0.0"
     const val MATERIAL_ANDROID = "1.2.1"
@@ -39,5 +43,5 @@ object Versions {
 
     const val RETROFIT = "2.7.1"
     const val MOSHI = "1.9.2"
-    const val OKHTTP3 = "4.3.1"
+    const val OKHTTP3 = "4.9.0"
 }

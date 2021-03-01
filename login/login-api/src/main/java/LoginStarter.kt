@@ -1,7 +1,7 @@
 package com.example.android.architectureexample
 
-import android.content.Context
+import android.app.Activity
 
 interface LoginStarter {
-    fun start(context: Context)
+    fun start(Activity: Activity)
 }

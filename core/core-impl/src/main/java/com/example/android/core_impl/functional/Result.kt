@@ -1,5 +1,8 @@
 package com.example.android.core_impl.functional
 
+import java.lang.Exception
+import kotlin.reflect.KFunction1
+
 
 sealed class ResultData<out R> {
     data class Success<out R>(val value: R) : ResultData<R>()
@@ -121,4 +124,4 @@ inline fun <R> ResultData(block: () -> R): ResultData<R> {
  * Create a ResultData<T> from a standard Result<T>.
  * @return ResultData<T>
  */
-inline fun <T> Result<T>.asResultData(): ResultData<T> = ResultData { getOrThrow() }
+fun <T> Result<T>.asResultData(): ResultData<T> = ResultData { getOrThrow() }

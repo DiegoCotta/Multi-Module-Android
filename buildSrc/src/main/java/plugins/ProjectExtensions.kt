@@ -60,6 +60,7 @@ fun Project.configApi() = this.extensions.getByType<BaseExtension>().apply {
 fun Project.configImpl() = this.extensions.getByType<BaseExtension>().apply {
     this@configImpl.dependencies {
         implBase()
+
     }
 }
 
