@@ -6,12 +6,14 @@ import com.example.android.core_impl.di.module.ContextModule
 import com.example.android.core_impl.di.module.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton
 
 @Component(
     modules = [
         ContextModule::class,
         NetworkModule::class,
+        AndroidInjectionModule::class
     ]
 )
 @Singleton

@@ -49,7 +49,7 @@
             android:padding="5dp"
             tools:text="2019"
             android:text="@{movie.year}"
-            android:textColor="#FFD700"
+            android:textColor="#fff"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="parent" />

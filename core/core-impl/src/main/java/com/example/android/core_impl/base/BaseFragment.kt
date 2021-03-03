@@ -12,13 +12,12 @@ import dagger.android.AndroidInjection
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
-abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : Fragment() {
+abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
 
     lateinit var binding: T
-    lateinit var viewModel: V
 
     protected abstract fun getLayoutId(): Int
-    protected abstract fun getViewModelClass(): Class<V>?
+
     abstract fun init()
 
     @Inject
@@ -35,10 +34,6 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : Fragment()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        getViewModelClass()?.apply {
-            viewModel = ViewModelProvider(this@BaseFragment, mViewModelFactory).get(this)
-        }
-
         init()
         super.onViewCreated(view, savedInstanceState)
     }

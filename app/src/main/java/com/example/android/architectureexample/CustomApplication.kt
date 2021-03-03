@@ -6,10 +6,18 @@ import com.example.android.core_impl.di.CoreComponentProvider
 import com.example.android.core_impl.di.component.CoreComponent
 import com.example.android.core_impl.di.component.DaggerCoreComponent
 import com.example.android.core_impl.di.module.ContextModule
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
+import javax.inject.Inject
 
-class CustomApplication : MultiDexApplication(), CoreComponentProvider {
+class CustomApplication : MultiDexApplication(), CoreComponentProvider, HasAndroidInjector {
 
     lateinit var coreComponent: CoreComponent
+
+    @Inject
+    lateinit var androidInjector:
+            DispatchingAndroidInjector<Any>
 
     override fun onCreate() {
         super.onCreate()
@@ -34,5 +42,8 @@ class CustomApplication : MultiDexApplication(), CoreComponentProvider {
     }
 
     override fun provideCoreComponent(): CoreComponent = coreComponent
+
+    override fun androidInjector(): AndroidInjector<Any> = androidInjector
+
 
 }

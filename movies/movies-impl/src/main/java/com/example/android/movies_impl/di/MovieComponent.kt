@@ -6,6 +6,7 @@ import com.example.android.movies_impl.di.module.MovieAPIClientModule
 import com.example.android.movies_impl.di.module.RepositoryModule
 import com.example.android.movies_impl.di.module.ViewModelModule
 import com.example.android.movies_impl.presentation.HomeMoviesFragment
+import com.example.android.movies_impl.presentation.MoviesActivity
 import dagger.Component
 import javax.inject.Singleton
 
@@ -20,4 +21,7 @@ import javax.inject.Singleton
 @FeatureScope
 interface MovieComponent {
     fun inject(homeMoviesFragment: HomeMoviesFragment)
+
+    fun inject(moviesActivity: MoviesActivity)
+
 }

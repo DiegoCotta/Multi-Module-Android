@@ -2,8 +2,11 @@ package com.example.android.movies_impl.presentation
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.android.core_impl.base.BaseFragment
+import com.example.android.core_impl.base.BaseViewModel
 import com.example.android.core_impl.di.InjectUtils
 import com.example.android.core_impl.di.component.DaggerCoreComponent
 import com.example.android.core_impl.functional.isSuccessful
@@ -22,13 +25,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class HomeMoviesFragment : BaseFragment<FragmentHomeMoviesBinding, MovieViewModel>() {
+class HomeMoviesFragment :
+    BaseFragment<FragmentHomeMoviesBinding>() {
 
     @Inject
     lateinit var useCase: SearchMovieUseCase
-    private var columnCount = 2
+    val viewModel: MovieViewModel by activityViewModels { mViewModelFactory }
 
-    override fun getViewModelClass(): Class<MovieViewModel> = MovieViewModel::class.java
+
+    private var columnCount = 2
 
     override fun getLayoutId(): Int = R.layout.fragment_home_movies
 
@@ -42,7 +47,6 @@ class HomeMoviesFragment : BaseFragment<FragmentHomeMoviesBinding, MovieViewMode
     }
 
     override fun init() {
-        binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.gridMovies.apply {
             addItemDecoration(MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.grid_margin)))
