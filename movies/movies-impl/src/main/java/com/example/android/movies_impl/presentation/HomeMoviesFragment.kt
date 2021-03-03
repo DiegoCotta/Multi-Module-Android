@@ -42,22 +42,15 @@ class HomeMoviesFragment : BaseFragment<FragmentHomeMoviesBinding, MovieViewMode
     }
 
     override fun init() {
-
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
         binding.gridMovies.apply {
             addItemDecoration(MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.grid_margin)))
             layoutManager = GridLayoutManager(context, columnCount)
             adapter = MoviesAdapter {
                 Toast.makeText(requireContext(), it.title, Toast.LENGTH_SHORT).show()
             }
-            GlobalScope.launch(Dispatchers.IO) {
-                val a = useCase.run(SearchMovieUseCase.Params("batman"))
-                if (a.isSuccessful)
-                    a.onSuccess { resultMovies ->
-                        GlobalScope.launch(Dispatchers.Main) {
-                            (binding.gridMovies.adapter as MoviesAdapter).submitList(resultMovies)
-                        }
-                    }
-            }
+            viewModel.searchMovies("batman")
         }
     }
 

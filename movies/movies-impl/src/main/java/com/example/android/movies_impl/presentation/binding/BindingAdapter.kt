@@ -17,7 +17,6 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<Movie>?) {
 
 @BindingAdapter("image")
 fun bindMovieImage(imageView: ImageView, movie: Movie?) {
-    val context = imageView.context
     if (movie != null ) {
         Glide
             .with(imageView.context)

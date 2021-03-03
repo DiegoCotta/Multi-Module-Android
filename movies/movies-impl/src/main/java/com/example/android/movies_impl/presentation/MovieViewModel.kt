@@ -13,7 +13,6 @@ import com.example.android.movies_impl.domain.model.Movie
 import com.example.android.movies_impl.domain.usecase.SearchMovieUseCase
 import javax.inject.Inject
 
-
 class MovieViewModel @Inject constructor(
     private val searchMovieUseCase: SearchMovieUseCase
 ) : BaseViewModel() {

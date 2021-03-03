@@ -21,8 +21,8 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : Fragment()
     protected abstract fun getViewModelClass(): Class<V>?
     abstract fun init()
 
-//    @Inject
-//    lateinit var mViewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var mViewModelFactory: ViewModelProvider.Factory
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,9 +35,9 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : Fragment()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        getViewModelClass()?.apply {
-//            viewModel = ViewModelProvider(this@BaseFragment, mViewModelFactory).get(this)
-//        }
+        getViewModelClass()?.apply {
+            viewModel = ViewModelProvider(this@BaseFragment, mViewModelFactory).get(this)
+        }
 
         init()
         super.onViewCreated(view, savedInstanceState)

@@ -1,6 +1,5 @@
 package com.example.android.movies_impl.di
 
-
 import com.example.android.core_impl.di.component.CoreComponent
 import com.example.android.core_impl.di.scope.FeatureScope
 import com.example.android.movies_impl.di.module.MovieAPIClientModule
@@ -13,7 +12,8 @@ import javax.inject.Singleton
 @Component(
     modules = [
         MovieAPIClientModule::class,
-        RepositoryModule::class
+        RepositoryModule::class,
+        ViewModelModule::class
     ],
     dependencies = [CoreComponent::class]
 )
