@@ -1,6 +1,7 @@
 package com.example.android.movies_impl.presentation
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -26,16 +27,11 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class HomeMoviesFragment :
-    BaseFragment<FragmentHomeMoviesBinding>() {
+    BaseFragment<FragmentHomeMoviesBinding>(R.layout.fragment_home_movies) {
 
-    @Inject
-    lateinit var useCase: SearchMovieUseCase
     val viewModel: MovieViewModel by activityViewModels { mViewModelFactory }
 
-
     private var columnCount = 2
-
-    override fun getLayoutId(): Int = R.layout.fragment_home_movies
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -46,7 +42,8 @@ class HomeMoviesFragment :
         super.onCreate(savedInstanceState)
     }
 
-    override fun init() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
         binding.gridMovies.apply {
             addItemDecoration(MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.grid_margin)))
@@ -54,7 +51,6 @@ class HomeMoviesFragment :
             adapter = MoviesAdapter {
                 Toast.makeText(requireContext(), it.title, Toast.LENGTH_SHORT).show()
             }
-            viewModel.searchMovies("batman")
         }
     }
 

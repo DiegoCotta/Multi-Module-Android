@@ -1,23 +1,16 @@
 package com.example.android.core_impl.base
 
-import android.os.Bundle
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.android.core_impl.delegate.dataBinding
 import javax.inject.Inject
 
-abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
+abstract class BaseActivity<T : ViewDataBinding>(@LayoutRes contentLayoutId : Int) : AppCompatActivity(contentLayoutId) {
 
-    lateinit var binding: T
-    abstract fun getLayoutId(): Int
-    abstract fun init()
+    @Inject
+    lateinit var mViewModelFactory: ViewModelProvider.Factory
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, getLayoutId())
-        binding.apply { lifecycleOwner = this@BaseActivity }
-        init()
-    }
+    protected val binding: T by dataBinding()
 }

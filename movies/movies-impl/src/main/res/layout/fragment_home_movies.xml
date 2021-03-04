@@ -15,7 +15,6 @@
         app:movieListData="@{viewModel.movies}"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-
         tools:context=".presentation.MovieFragment"
         tools:listitem="@layout/item_movie" />
 </layout>

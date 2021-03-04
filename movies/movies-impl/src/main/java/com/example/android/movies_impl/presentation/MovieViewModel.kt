@@ -36,16 +36,4 @@ class MovieViewModel @Inject constructor(
         }
     }
 
-//    suspend fun refreshAsteroids(startDate: String ) {
-//        withContext(Dispatchers.IO) {
-//            val asteroidList = Network.nasaService.getAsteroidlist(startDate).await()
-//            database.asteroidDao.insertAll(*parseAsteroidsJsonResult(JSONObject(asteroidList)).asDatabaseModel())
-//        }
-//    }
-
-//    val asteroids: LiveData<List<Asteroid>> =
-//        Transformations.map(database.asteroidDao.getAsteroids()) {
-//            it.asDomainModel()
-//        }
-
 }
