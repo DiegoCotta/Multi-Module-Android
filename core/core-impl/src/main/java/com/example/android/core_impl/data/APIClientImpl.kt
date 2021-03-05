@@ -1,7 +1,7 @@
 package com.example.android.core_impl.data
 
 import com.example.android.core_impl.BuildConfig
-import exception.IllegalAppStateException
+import com.example.android.core_impl.exception.IllegalAppStateException
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

@@ -4,27 +4,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.android.core_impl.base.BaseFragment
-import com.example.android.core_impl.base.BaseViewModel
 import com.example.android.core_impl.di.InjectUtils
-import com.example.android.core_impl.di.component.DaggerCoreComponent
-import com.example.android.core_impl.functional.isSuccessful
-import com.example.android.core_impl.functional.onSuccess
 import com.example.android.core_impl.view.MarginItemDecoration
 import com.example.android.movies_impl.R
 import com.example.android.movies_impl.databinding.FragmentHomeMoviesBinding
 import com.example.android.movies_impl.di.DaggerMovieComponent
-import com.example.android.movies_impl.domain.repository.MoviesRepository
-import com.example.android.movies_impl.domain.usecase.SearchMovieUseCase
 import com.example.android.movies_impl.presentation.adapter.MoviesAdapter
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
 class HomeMoviesFragment :
     BaseFragment<FragmentHomeMoviesBinding>(R.layout.fragment_home_movies) {

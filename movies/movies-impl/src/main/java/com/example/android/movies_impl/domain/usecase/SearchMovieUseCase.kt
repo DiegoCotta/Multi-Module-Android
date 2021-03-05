@@ -5,6 +5,7 @@ import com.example.android.core_impl.base.BaseUseCaseRequest
 import com.example.android.core_impl.functional.ResultData
 import com.example.android.movies_impl.domain.model.Movie
 import com.example.android.movies_impl.domain.repository.MoviesRepository
+import kotlinx.coroutines.CoroutineScope
 import java.lang.Exception
 import javax.inject.Inject
 

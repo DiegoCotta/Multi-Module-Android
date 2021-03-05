@@ -5,12 +5,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.example.android.core_impl.base.BaseViewModel
 import com.example.android.core_impl.functional.isSuccessful
 import com.example.android.core_impl.functional.onFailure
 import com.example.android.core_impl.functional.onSuccess
 import com.example.android.movies_impl.domain.model.Movie
 import com.example.android.movies_impl.domain.usecase.SearchMovieUseCase
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MovieViewModel @Inject constructor(
@@ -24,7 +26,7 @@ class MovieViewModel @Inject constructor(
 
     fun searchMovies(search: String) {
         loading.value = true
-        searchMovieUseCase(SearchMovieUseCase.Params(search)) { result ->
+        searchMovieUseCase(viewModelScope, SearchMovieUseCase.Params(search)) { result ->
             if (result.isSuccessful)
                 result.onSuccess { resultMovies ->
                     _movies.value = resultMovies
@@ -34,6 +36,6 @@ class MovieViewModel @Inject constructor(
             }
             loading.value = false
         }
-    }
 
+    }
 }
