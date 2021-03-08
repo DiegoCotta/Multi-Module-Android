@@ -1,6 +1,6 @@
 package com.example.android.movies_impl.domain.repository
 
-import com.example.android.movies_impl.domain.model.Movie
+import com.example.android.movies_api.data.model.Movie
 import com.example.android.movies_impl.domain.model.MovieDetails
 
 interface MoviesRepository {

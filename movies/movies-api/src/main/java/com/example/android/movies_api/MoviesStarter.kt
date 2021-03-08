@@ -1,7 +1,7 @@
 package com.example.android.movies_api
 
-import android.app.Activity
+import android.content.Context
 
 interface MoviesStarter {
-    fun start(activity: Activity)
+    fun start(context: Context)
 }

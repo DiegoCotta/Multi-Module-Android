@@ -1,16 +1,16 @@
 package com.example.android.movies_impl.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.android.core_impl.base.BaseFragment
-import com.example.android.core_impl.di.InjectUtils
 import com.example.android.core_impl.view.MarginItemDecoration
 import com.example.android.movies_impl.R
 import com.example.android.movies_impl.databinding.FragmentHomeMoviesBinding
-import com.example.android.movies_impl.di.DaggerMovieComponent
+import com.example.android.movies_impl.di.MovieComponent
 import com.example.android.movies_impl.presentation.adapter.MoviesAdapter
 
 class HomeMoviesFragment :
@@ -22,10 +22,7 @@ class HomeMoviesFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        DaggerMovieComponent.builder()
-            .coreComponent(InjectUtils.provideCoreComponent(requireContext().applicationContext))
-            .build()
-            .inject(this)
+        MovieComponent.get().inject(this)
         super.onCreate(savedInstanceState)
     }
 

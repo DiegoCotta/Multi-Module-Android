@@ -8,6 +8,9 @@ plugins {
     id("kotlin-kapt")
 }
 
+apply(plugin = "com.google.gms.google-services")
+
+
 android {
 
     defaultConfig {
@@ -38,13 +41,13 @@ dependencies {
     this.implementation("com.android.support:multidex:1.0.3")
 
     this.kapt(com.example.android.architectureexample.Dependencies.DAGGER_ANDROID_PROCESSOR)
-    this.implementation(project(":core-api"))
-    this.implementation(project(":core-impl"))
+    implementation(project(":core-impl"))
     this.implementation(project(":login-api"))
     this.implementation(project(":login-impl"))
     this.implementation(project(":movies-api"))
     this.implementation(project(":movies-impl"))
     this.implementation( "com.google.dagger:dagger:2.26")
     this.kapt("com.google.dagger:dagger-compiler:2.26")
+    this.implementation("com.google.firebase:firebase-bom:26.6.0")
 
 }

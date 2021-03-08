@@ -3,3 +3,7 @@ plugins {
     id("kotlin-android")
     id("android-api")
 }
+dependencies {
+    implementation(project(":core-impl"))
+}
+

@@ -7,11 +7,12 @@ import com.example.android.login_impl.domain.model.User
 import java.lang.Exception
 
 class GetLoginUseCase : BaseUseCase<User, BaseUseCaseRequest>() {
-    override suspend fun run(params: BaseUseCaseRequest): ResultData<User> {
+    override suspend fun run(params: BaseUseCaseRequest?): ResultData<User> {
         return try {
             ResultData.Success(User("a", 1))
         } catch (e: Exception) {
             ResultData.Failure(e)
         }
     }
+
 }

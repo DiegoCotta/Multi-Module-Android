@@ -18,12 +18,20 @@ package com.example.android.architectureexample.di
 
 import android.content.Context
 import com.example.android.architectureexample.CustomApplication
+import com.example.android.core_impl.di.injector.ComponentManager
+import com.example.android.core_impl.di.injector.RootComponentManager
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class AppModule {
 
+    @Singleton
     @Provides
     fun provideContext(application: CustomApplication): Context = application.applicationContext
+
+    @Singleton
+    @Provides
+    fun provideComponentManager(): ComponentManager = RootComponentManager
 }

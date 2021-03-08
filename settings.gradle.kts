@@ -1,4 +1,3 @@
-include(":core-api")
 include(":core-impl")
 include(":movies-api")
 include(":movies-impl")
@@ -9,6 +8,5 @@ project(":login-api").projectDir = File(rootDir, "login/login-api/")
 project(":login-impl").projectDir = File(rootDir, "login/login-impl/")
 project(":movies-api").projectDir = File(rootDir, "movies/movies-api/")
 project(":movies-impl").projectDir = File(rootDir, "movies/movies-impl/")
-project(":core-api").projectDir = File(rootDir, "core/core-api/")
 project(":core-impl").projectDir = File(rootDir, "core/core-impl/")
 rootProject.name = "Architecture Example"

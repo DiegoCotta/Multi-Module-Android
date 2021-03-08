@@ -1,16 +1,12 @@
 package com.example.android.movies_impl.presentation.binding
 
-import android.widget.EditText
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.databinding.InverseBindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.android.movies_impl.R
-import com.example.android.movies_impl.domain.model.Movie
+import com.example.android.movies_api.data.model.Movie
 import com.example.android.movies_impl.presentation.adapter.MoviesAdapter
-import java.util.*
 
 @BindingAdapter("movieListData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Movie>?) {

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.movies_impl.databinding.ItemMovieBinding
-import com.example.android.movies_impl.domain.model.Movie
+import com.example.android.movies_api.data.model.Movie
 
 
 class MoviesAdapter(val onClickListener: (Movie) -> Unit) :

@@ -1,4 +1,4 @@
-package com.example.android.movies_impl.domain.model
+package com.example.android.movies_api.data.model
 
 data class Movie(
     val poster: String,

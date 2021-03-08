@@ -20,6 +20,5 @@ android {
 }
 
 dependencies {
-    this.implementation(project(":core-api"))
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 }
