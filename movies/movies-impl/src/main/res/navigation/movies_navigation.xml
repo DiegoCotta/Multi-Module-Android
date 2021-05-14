@@ -8,5 +8,14 @@
         android:id="@+id/homeMoviesFragment"
         android:name="com.example.android.movies_impl.presentation.HomeMoviesFragment"
         tools:layout="@layout/fragment_home_movies"
-        android:label="HomeMoviesFragment" />
+        android:label="HomeMoviesFragment" >
+        <action
+            android:id="@+id/action_homeMoviesFragment_to_otherFragment"
+            app:destination="@id/otherFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/otherFragment"
+        android:name="com.example.android.movies_impl.presentation.OtherFragment"
+        tools:layout="@layout/fragment_other"
+        android:label="OtherFragment" />
 </navigation>

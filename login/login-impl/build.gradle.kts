@@ -8,12 +8,12 @@ plugins {
 }
 
 dependencies {
-    this.implementation(project(":login-api"))
+    implementation(project(":login-api"))
     implementation(project(":core-impl"))
 
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    this.implementation("com.firebaseui:firebase-ui-auth:5.0.0")
+    implementation("com.firebaseui:firebase-ui-auth:7.1.1")
 
 }

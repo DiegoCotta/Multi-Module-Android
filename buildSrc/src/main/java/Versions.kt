@@ -1,6 +1,5 @@
 package com.example.android.architectureexample
 
-import com.android.aaptcompiler.android.ResTableConfig
 
 object Versions {
 

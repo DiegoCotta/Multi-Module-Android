@@ -1,7 +1,8 @@
 package com.example.android.architectureexample
 
-interface LoginApi {
-    fun loginStarter(): LoginStarter
+import com.example.android.core_impl.di.injector.ComponentApi
 
-    //fun getLoggedUser(): Flow<User>
+interface LoginApi : ComponentApi {
+    fun loginStarter(): LoginStarter
+    fun getLoginInteractors(): LoginInteractors
 }

@@ -1,38 +1,38 @@
 package com.example.android.architectureexample
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import android.os.PersistableBundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.example.android.architectureexample.di.AppComponent
 import com.example.android.core_impl.di.injector.ComponentManager
 import com.example.android.core_impl.di.injector.ComponentProperties
-import com.example.android.core_impl.functional.isFailure
-import com.example.android.core_impl.functional.onFailure
 import com.example.android.movies_api.MoviesApi
-import com.example.android.movies_api.MoviesStarter
 import javax.inject.Inject
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalCoroutinesApi
 class SplashActivity : AppCompatActivity() {
+
     @Inject
     lateinit var componentManager: ComponentManager
 
+    @Inject
+    lateinit var mViewModelFactory: ViewModelProvider.Factory
+
+    val viewModel: SplashViewModel by viewModels { mViewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppComponent.get().inject(this@SplashActivity)
+    }
 
-        AppComponent.get().inject(this)
-        val result = componentManager.getOrCreateComponent(ComponentProperties(MoviesApi::class))
-            .movieInterector().movieToRentUseCase()
-        if (!result.isFailure) {
-            result.onFailure {
-                Toast.makeText(this, it!!.message, Toast.LENGTH_LONG).show()
-            }
 
-        } else {
-            componentManager.getOrCreateComponent(ComponentProperties(MoviesApi::class))
-                .moviesStarter().start(this)
-            finish()
-        }
+    override fun onResume() {
+        super.onResume()
+        startActivity(Intent(this,MainActivity::class.java))
     }
 }

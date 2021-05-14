@@ -1,20 +1,30 @@
 package com.example.android.core_impl.base
 
-import com.example.android.core_impl.functional.ResultData
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.channels.ConflatedBroadcastChannel
+import kotlinx.coroutines.channels.sendBlocking
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOn
 
-abstract class BaseUseCase<out Type, in BaseUseCaseRequest> where Type : Any {
+@OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
+abstract class BaseUseCase<Type : Any, Params : Any?> : UseCase<Type> {
+    private val channel = ConflatedBroadcastChannel<Params>()
 
-    abstract suspend fun run(params: BaseUseCaseRequest?): ResultData<Type>
+    operator fun invoke(params: Params) = channel.sendBlocking(params)
 
-    open operator fun invoke(
-        scope: CoroutineScope,
-        params: BaseUseCaseRequest? = null,
-        onResult: (ResultData<Type>) -> Unit = {}
-    ) {
-        val backgroundJob = scope.async { run(params) }
-        scope.launch { onResult(backgroundJob.await()) }
-    }
+    protected abstract fun doWork(params: Params): Flow<Type?>
+
+    fun produce(params: Params): Flow<Type?> = doWork(params = params)
+        .flowOn(dispatcher)
+
+    override fun observe(): Flow<Type?> = channel.asFlow()
+        .distinctUntilChanged()
+        .flatMapLatest { doWork(it) }
+        .flowOn(dispatcher)
+
+    object None
 }

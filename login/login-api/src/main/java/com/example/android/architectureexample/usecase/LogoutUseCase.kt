@@ -1,0 +1,3 @@
+package com.example.android.architectureexample.com.example.android.architectureexample.usecase
+
+interface LogoutUseCase

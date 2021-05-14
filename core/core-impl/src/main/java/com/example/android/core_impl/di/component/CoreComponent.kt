@@ -1,6 +1,7 @@
 package com.example.android.core_impl.di.component
 
 import android.content.Context
+import com.example.android.core_impl.base.BaseInteractor
 import com.example.android.core_impl.data.APIClient
 import com.example.android.core_impl.di.injector.ComponentFactory
 import com.example.android.core_impl.di.injector.ComponentManager
@@ -19,7 +20,7 @@ import javax.inject.Singleton
     ]
 )
 @Singleton
-abstract class CoreComponent : CoreComponentApi{
+abstract class CoreComponent : CoreComponentApi {
     companion object {
         fun get(): CoreComponent =
             RootComponentManager.getComponent(CoreComponentApi::class) as CoreComponent
@@ -28,6 +29,7 @@ abstract class CoreComponent : CoreComponentApi{
     }
 
     override fun isReleasable() = false
+
 }
 
 class CoreComponentFactory : ComponentFactory<CoreComponentApi> {

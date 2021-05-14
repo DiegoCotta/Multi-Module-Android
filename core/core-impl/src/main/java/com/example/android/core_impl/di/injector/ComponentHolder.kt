@@ -1,5 +1,7 @@
 package com.example.android.core_impl.di.injector
 
+import kotlin.jvm.Throws
+
 internal class ComponentHolder<T : ComponentApi>(
     private val componentFactory: ComponentFactory<T>,
     private val componentsManager: ComponentManager

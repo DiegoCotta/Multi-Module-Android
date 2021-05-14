@@ -2,8 +2,9 @@ package com.example.android.login_impl.presentation
 
 import androidx.lifecycle.map
 import com.example.android.core_impl.base.BaseViewModel
+import javax.inject.Inject
 
-class LoginViewModel : BaseViewModel() {
+class LoginViewModel @Inject constructor(): BaseViewModel() {
 
 
     enum class AuthenticationState {

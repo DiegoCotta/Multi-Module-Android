@@ -2,8 +2,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.login_impl">
 
-    <application>
-        <activity android:name=".presentation.LoginActivity"></activity>
-    </application>
 
 </manifest>
